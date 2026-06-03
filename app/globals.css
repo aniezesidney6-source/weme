@@ -1,0 +1,61 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ----------------------------------------------------------------
+   Cal Sans — the display headline font. It is not on Google Fonts,
+   so we self-host it via the Calcom CDN. (Swap for a local /public
+   copy in production if you prefer no external requests.)
+----------------------------------------------------------------- */
+@font-face {
+  font-family: "Cal Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("https://cdn.jsdelivr.net/fontsource/fonts/cal-sans@latest/latin-400-normal.woff2")
+    format("woff2");
+}
+
+:root {
+  --font-cal-sans: "Cal Sans";
+}
+
+html,
+body {
+  background: #ffffff;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+@layer components {
+  /* Subtle dotted paper texture behind the hero (spec: opacity 0.34) */
+  .dot-grid {
+    background-color: theme("colors.canvas");
+    background-image: radial-gradient(
+      rgba(36, 54, 0, 0.16) 1.1px,
+      transparent 1.1px
+    );
+    background-size: 22px 22px;
+    background-position: -8px -8px;
+  }
+
+  /* Brushed-metal gradient used by the WEME wordmark + logo mark */
+  .text-metal {
+    background: linear-gradient(
+      91.63deg,
+      #000000 0.24%,
+      #111111 49.43%,
+      #555555 65.17%,
+      #d4d4d8 98.62%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+
+  /* Slashed-zero numerals on the playing cards */
+  .slashed-zero {
+    font-feature-settings: "zero" on;
+  }
+}
